@@ -1,0 +1,41 @@
+package com.example.FitnessGoalsApp;
+
+import javafx.fxml.FXML;
+
+public class HomeController {
+
+    @FXML
+    private void openSettings() {
+        SceneManager.loadScene("Settings.fxml");
+    }
+
+    @FXML
+    private void openProfile() {
+        SceneManager.loadScene("Profile.fxml");
+    }
+
+    @FXML
+    private void openExercises() {
+        SceneManager.loadScene("Exercises.fxml");
+    }
+
+    @FXML
+    private void openActivityRecord() {
+        SceneManager.loadScene("ActivityRecord.fxml");
+    }
+
+    @FXML
+    private void openNutrition() {
+        SceneManager.loadScene("Nutrition.fxml");
+    }
+
+    @FXML
+    private void openFitnessGoals() {
+        SceneManager.loadScene("FitnessGoals.fxml");
+    }
+
+    @FXML
+    private void openCustomerSupport() {
+        SceneManager.loadScene("CustomerSupport.fxml");
+    }
+}
