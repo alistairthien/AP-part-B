@@ -1,0 +1,42 @@
+package com.example.FitnessGoalsApp;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert;
+
+public class LoginController {
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private void handleLogin() {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        if (username.equals("admin") && password.equals("password")) {
+            SceneManager.loadScene("Home.fxml");
+        } else {
+            showAlert("Login Failed", "Invalid username or password.");
+        }
+    }
+
+    @FXML
+    private void handleRegister() {
+        SceneManager.loadScene("Register.fxml");
+    }
+
+    @FXML
+    private void handleForgotPassword() {
+        SceneManager.loadScene("ForgotPassword.fxml");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
