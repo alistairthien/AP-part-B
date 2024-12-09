@@ -1,1 +1,55 @@
+package com.example.javaapp;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.Externalizable;
+import java.io.IOException;
+
+public class NutritionController {
+
+    @FXML
+    private Button ProfileIcon;
+    @FXML
+    private Button ProfileButton;
+    @FXML
+    private Label NutritionLabel;
+
+    @FXML
+    public void onClickProfile(MouseEvent event) throws IOException {
+
+            //bring user to profile page after clicking profile icon
+            FXMLLoader loader = new FXMLLoader(Profile.class.getResource("Profile.fxml"));
+            Scene scene = new Scene(loader.load(),1930, 1000);
+            Stage stage = new Stage();
+            stage.setTitle("Profile Page");
+            stage.setScene(scene);
+            stage.show();
+    }
+
+    @FXML
+    public void onClickReturn(){
+
+        //code to bring user back to home page after clicking return
+
+        /*FXMLLoader loader = new FXMLLoader(Profile.class.getResource("Home.fxml"));
+        Scene scene = new Scene(loader.load(),1930, 1000);
+        Stage stage = new Stage();
+        stage.setTitle("Home Page");
+        stage.setScene(scene);
+        stage.show();*/
+
+    }
+
+
+
+
+}
