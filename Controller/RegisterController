@@ -1,0 +1,39 @@
+package com.example.FitnessGoalsApp;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert;
+
+public class RegisterController {
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private PasswordField confirmPasswordField;
+
+    @FXML
+    private void handleRegister() {
+        if (!passwordField.getText().equals(confirmPasswordField.getText())) {
+            showAlert("Registration Failed", "Passwords do not match.");
+        } else {
+            showAlert("Registration Successful", "Account created!");
+            SceneManager.loadScene("Login.fxml");
+        }
+    }
+
+    @FXML
+    private void goToLogin() {
+        SceneManager.loadScene("Login.fxml");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
