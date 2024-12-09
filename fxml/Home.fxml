@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #031273;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FitnessGoalsApp.HomeController">
+   <children>
+      <Button layoutX="71.0" layoutY="268.0" onAction="#openNutrition" text="Nutrition" />
+      <Button layoutX="335.0" layoutY="255.0" onAction="#openActivityRecord" text="Activity Record" />
+      <Button layoutX="205.0" layoutY="200.0" onAction="#openExercises" text="Exercises" />
+      <Button layoutX="163.0" layoutY="255.0" onAction="#openFitnessGoals" text="Fitness Goals" />
+      <Button layoutX="6.0" layoutY="187.0" onAction="#openCustomerSupport" text="Customer Support">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <ToolBar prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #031299;">
+         <items>
+            <Button onAction="#openSettings" text="Settings">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text=" Home                                                       " textFill="WHITE" />
+            <Button contentDisplay="CENTER" onAction="#openProfile" text="Profile">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </items>
+      </ToolBar>
+   </children>
+</AnchorPane>
+
