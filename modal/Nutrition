@@ -2,11 +2,7 @@ package com.example.javaapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,12 +38,7 @@ public class Nutrition extends Application {
         this.date = date;
     }
 
-    public class NutritionController{
-        public void onClickProfile(MouseEvent event){
 
-        }
-
-    }
 
 
 
@@ -60,6 +51,15 @@ public class Nutrition extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static class NutritionController {
+        public void onClickProfile() {
+            NutritionController nutri = new NutritionController();
+            nutri.onClickProfile();
+        }
+
+    }
+
 
     public static void main(String[] args) {
         launch();
