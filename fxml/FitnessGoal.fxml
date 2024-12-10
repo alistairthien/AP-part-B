@@ -1,1 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.FitnessGoalController" spacing="10" alignment="CENTER">
+    <HBox spacing="10">
+        <TextField fx:id="goalDescriptionField" promptText="Enter goal details" />
+        <DatePicker fx:id="completionDatePicker" promptText="DD/MM/YYYY" />
+        <Button text="Add Goal" onAction="#addGoal" />
+    </HBox>
+    <VBox fx:id="goalsContainer" spacing="10" prefWidth="300" />
+</VBox>
 
