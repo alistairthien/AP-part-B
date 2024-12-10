@@ -1,1 +1,32 @@
+package dao;
+
+import Model.FitnessGoal;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FitnessGoalDAO {
+
+         private static final String FILE_NAME = "fitness_goals.txt";
+
+        // Save goals to file
+        public void saveGoals(List<FitnessGoal> goals) throws IOException {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+                oos.writeObject(goals);
+            }
+        }
+
+        // Load goals from file
+        public List<FitnessGoal> loadGoals() throws IOException, ClassNotFoundException {
+            File file = new File(FILE_NAME);
+            if (!file.exists()) {
+                return new ArrayList<>();
+            }
+
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+                return (List<FitnessGoal>) ois.readObject();
+            }
+        }
+    }
+
 
