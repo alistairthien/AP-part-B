@@ -1,1 +1,50 @@
+package Model;
+
+public class FitnessGoal {
+    private int goalId;
+    private String description;
+    private String completionDate;
+    private String status; // e.g., "Complete" or "Incomplete"
+
+    public FitnessGoal(int goalId, String description, String completionDate, String status) {
+        this.goalId = goalId;
+        this.description = description;
+        this.completionDate = completionDate;
+        this.status = status;
+    }
+
+    // Getters and Setters
+    public int getGoalId() {
+        return goalId;
+    }
+
+    public void setGoalId(int goalId) {
+        this.goalId = goalId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(String completionDate) {
+        this.completionDate = completionDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+}
+
 
