@@ -1,1 +1,85 @@
+package controller;
+
+import dao.FitnessGoalDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import Model.FitnessGoal;
+
+import java.io.IOException;
+import java.util.List;
+
+public class FitnessGoalController {
+    @FXML
+    private TextField goalDescriptionField;
+
+    @FXML
+    private DatePicker completionDatePicker;
+
+    @FXML
+    private VBox goalsContainer;
+
+    private FitnessGoalDAO goalDAO = new FitnessGoalDAO();
+    private ObservableList<FitnessGoal> goals = FXCollections.observableArrayList();
+
+    @FXML
+    public void initialize() {
+        try {
+            List<FitnessGoal> loadedGoals = goalDAO.loadGoals();
+            goals.addAll(loadedGoals);
+            displayGoals();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void addGoal() {
+        String description = goalDescriptionField.getText();
+        String completionDate = completionDatePicker.getValue() != null
+                ? completionDatePicker.getValue().toString()
+                : "";
+
+        if (description.isEmpty() || completionDate.isEmpty()) {
+            showAlert("Error", "Please fill in all fields.");
+            return;
+        }
+
+        FitnessGoal newGoal = new FitnessGoal(goals.size() + 1, description, completionDate, "Incomplete");
+        goals.add(newGoal);
+
+        try {
+            goalDAO.saveGoals(goals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        displayGoals();
+        goalDescriptionField.clear();
+        completionDatePicker.setValue(null);
+    }
+
+    private void displayGoals() {
+        goalsContainer.getChildren().clear();
+
+        for (FitnessGoal goal : goals) {
+            Label goalLabel = new Label("Goal " + goal.getGoalId() + ": " + goal.getDescription() +
+                    "\nStatus: " + goal.getStatus() +
+                    "\nComplete By: " + goal.getCompletionDate());
+            goalLabel.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #ccc;");
+            goalsContainer.getChildren().add(goalLabel);
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
+
 
