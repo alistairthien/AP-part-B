@@ -1,17 +1,19 @@
-package controller;
+package com.example.javaapp.Controller;
 
-import dao.FitnessGoalDAO;
+
+import com.example.javaapp.DAO.FitnessGoalDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import Model.FitnessGoal;
+import com.example.javaapp.Model.FitnessGoal;
 
 import java.io.IOException;
 import java.util.List;
 
 public class FitnessGoalController {
+
     @FXML
     private TextField goalDescriptionField;
 
@@ -81,5 +83,3 @@ public class FitnessGoalController {
         alert.showAndWait();
     }
 }
-
-
