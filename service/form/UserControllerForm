@@ -1,0 +1,135 @@
+package com.example.ap_assignment;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+
+public class UserControllerForm {
+    private UserController userController = new UserController();
+    private String currentUserId;
+
+    // Login fields
+    @FXML private TextField loginUsernameField;
+    @FXML private PasswordField loginPasswordField;
+    @FXML private Label loginOutputLabel;
+
+    // Forgot Password fields
+    @FXML private TextField forgotPasswordUserIdField;
+    @FXML private TextField forgotPasswordUsernameField;
+    @FXML private Label forgotPasswordOutputLabel;
+
+    // Reset Password fields
+    @FXML private PasswordField resetPasswordNewField;
+    @FXML private PasswordField resetPasswordConfirmField;
+    @FXML private Label resetPasswordOutputLabel;
+
+    // Register fields
+    @FXML private TextField registerNameField;
+    @FXML private TextField registerUsernameField;
+    @FXML private PasswordField registerPasswordField;
+    @FXML private PasswordField registerPasswordConfirmField;
+    @FXML private TextField registerDobField;
+    @FXML private TextField registerHeightField;
+    @FXML private TextField registerWeightField;
+    @FXML private Label registerOutputLabel;
+
+    // Login method
+    @FXML
+    public void loginUser() {
+        String username = loginUsernameField.getText();
+        String password = loginPasswordField.getText();
+        boolean success = userController.login(username, password);
+        loginOutputLabel.setText(success ? "Login successful!" : "Invalid credentials.");
+    }
+
+    public void verifyUser() throws Exception {
+        String username = forgotPasswordUsernameField.getText();
+        String userId = forgotPasswordUserIdField.getText();
+        boolean verified = userController.verifyUser(username, userId);
+
+        if (verified) {
+            UserSession.setCurrentUserId(userId); // Save user ID globally
+            Main.showResetPassword();
+        } else {
+            forgotPasswordOutputLabel.setText("Invalid username or ID.");
+        }
+    }
+
+    // Reset password method
+    @FXML
+    public void resetPassword() {
+        String newPassword = resetPasswordNewField.getText();
+        String confirmPassword = resetPasswordConfirmField.getText();
+        String currentUserId = UserSession.getCurrentUserId();
+        if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            resetPasswordOutputLabel.setText("Please enter both password fields.");
+            return;
+        }
+        if (!newPassword.equals(confirmPassword)) {
+            resetPasswordOutputLabel.setText("Passwords do not match.");
+            return;
+        }
+        boolean success = userController.resetPassword(currentUserId, newPassword);
+        resetPasswordOutputLabel.setText(success ? "Password reset successful!" : "User not found.");
+    }
+
+    // Register method
+    @FXML
+    public void registerUser() {
+        try{
+            String name = registerNameField.getText();
+            String username = registerUsernameField.getText();
+            String password = registerPasswordField.getText();
+            String confirmPassword = registerPasswordConfirmField.getText();
+            String dob = registerDobField.getText();
+            String heightText = registerHeightField.getText().trim();
+            String weightText = registerWeightField.getText().trim();
+
+            if (name.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || dob.isEmpty() ||
+                    heightText.isEmpty() || weightText.isEmpty()) {
+                registerOutputLabel.setText("All fields are required.");
+                return;
+            }
+
+            if (!password.equals(confirmPassword)) {
+                registerOutputLabel.setText("Passwords do not match.");
+                return;
+            }
+
+            double height;
+            double weight;
+            try {
+                height = Double.parseDouble(heightText);
+                weight = Double.parseDouble(weightText);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid height or weight input: " + heightText + ", " + weightText);
+                registerOutputLabel.setText("Height and weight must be valid numbers.");
+                return;
+            }
+
+            String userId = userController.registerUser(name, username, password, dob, height, weight);
+            registerOutputLabel.setText("User Registered!   ID: " + userId);
+            System.out.println("Registering user with data: " + name + ", " + username + ", " + dob + ", " + height + ", " + weight);
+
+        } catch (Exception e) {
+            registerOutputLabel.setText("Error: " + e.getMessage());
+            e.printStackTrace();  // Print the stack trace for debugging
+        }
+    }
+
+    // Navigation methods
+    @FXML
+    public void goToLogin() throws Exception {
+        Main.showLogin();
+    }
+
+    @FXML
+    public void goToForgotPassword() throws Exception {
+        Main.showForgotPassword();
+    }
+
+    @FXML
+    public void goToRegister() throws Exception {
+        Main.showRegister();
+    }
+}
+
