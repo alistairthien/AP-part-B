@@ -1,27 +1,54 @@
-package com.example.javaapp;
+package com.example.ap_assignment;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.File;
 
 public class Main extends Application {
+
+    private final DAOImpObj dao = DAOImpObj.getInstance();
+
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FitnessGoal.fxml"));
-        Scene scene = new Scene(loader.load());
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Fitness Goals");
+    public void start(Stage primaryStage) {
+        ensureDirectoryExists("src/main/data");
+        dao.loadUsersFromFile("src/main/data/users.txt");
+        SceneManager.setStage(primaryStage);
+        SceneManager.loadScene("Login.fxml");
+        primaryStage.setTitle("Welcome");
+        primaryStage.setOnCloseRequest(event -> {
+            dao.saveUsersToFile("users.txt");
+            System.out.println("User data saved before exit.");
+        });
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+
+
+    public static void showLogin() throws Exception {
+        SceneManager.loadScene("Login.fxml");
+    }
+
+    public static void showForgotPassword() throws Exception {
+        SceneManager.loadScene("ForgotPassword.fxml");
+    }
+
+    public static void showResetPassword() throws Exception {
+        SceneManager.loadScene("ResetPassword.fxml");
+    }
+
+    public static void showRegister() throws Exception {
+        SceneManager.loadScene("Register.fxml");
+    }
+
+    public void ensureDirectoryExists(String path) {
+        File directory = new File(path);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create directories if they don't exist
+        }
+    }
 }
-
-
-
 
