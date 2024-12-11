@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.FitnessGoalController" spacing="10" alignment="CENTER">
-    <HBox spacing="10">
-        <TextField fx:id="goalDescriptionField" promptText="Enter goal details" />
-        <DatePicker fx:id="completionDatePicker" promptText="DD/MM/YYYY" />
-        <Button text="Add Goal" onAction="#addGoal" />
-    </HBox>
-    <VBox fx:id="goalsContainer" spacing="10" prefWidth="300" />
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaapp.Controller.FitnessGoalController">
+    <AnchorPane prefHeight="486.0" prefWidth="1036.0">
+        <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1c9bbf" height="514.0" layoutX="-1.0" layoutY="-28.0" stroke="BLACK" strokeType="INSIDE" width="1037.0" />
+            <TextField fx:id="goalDescriptionField" focusTraversable="false" layoutX="27.0" layoutY="42.0" prefHeight="30.0" prefWidth="151.0" promptText="Enter goal details">
+                <font>
+                    <Font name="System Bold Italic" size="13.0" />
+                </font>
+            </TextField>
+            <DatePicker fx:id="completionDatePicker" layoutX="179.0" layoutY="42.0" prefHeight="30.0" prefWidth="179.0" promptText="DD/MM/YYYY" />
+            <Button layoutX="358.0" layoutY="42.0" onAction="#addGoal" text="Add Goal" />
+            <Text layoutX="690.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goals" wrappingWidth="68.80000000000007">
+                <font>
+                    <Font name="Arial Black" size="19.0" />
+                </font>
+            </Text>
+         <Button fx:id="returnButton" layoutX="27.0" layoutY="93.0" mnemonicParsing="false" onAction="#onClickReturn" text="Button" />
+         <VBox fx:id="goalsContainer" layoutX="631.0" layoutY="72.0" prefHeight="303.0" prefWidth="237.0" />
+        </children>
+    </AnchorPane>
 </VBox>
-
