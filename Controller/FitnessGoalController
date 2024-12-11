@@ -2,10 +2,12 @@ package com.example.javaapp.Controller;
 
 
 import com.example.javaapp.DAO.FitnessGoalDAO;
+import com.example.javaapp.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.javaapp.Model.FitnessGoal;
 
@@ -16,15 +18,19 @@ public class FitnessGoalController {
 
     @FXML
     private TextField goalDescriptionField;
-
     @FXML
     private DatePicker completionDatePicker;
-
     @FXML
     private VBox goalsContainer;
+    @FXML
+    private Button returnButton;
+    private int goalCount = 1;
+
 
     private FitnessGoalDAO goalDAO = new FitnessGoalDAO();
     private ObservableList<FitnessGoal> goals = FXCollections.observableArrayList();
+
+
 
     @FXML
     public void initialize() {
@@ -63,6 +69,8 @@ public class FitnessGoalController {
         completionDatePicker.setValue(null);
     }
 
+
+
     private void displayGoals() {
         goalsContainer.getChildren().clear();
 
@@ -82,4 +90,30 @@ public class FitnessGoalController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    @FXML
+    private void onClickReturn(){
+        SceneManager.loadScene("Home.fxml");
+    };
+
+    public void onGoalsDetails(){
+        String userInput = goalDescriptionField.getText();
+        if(userInput.isEmpty()){
+            return;
+        }
+        goalCount++;
+        HBox goalDetails = new HBox();
+        Label goalLabel = new Label("goal" + goalCount );
+        goalDetails.setStyle("-fx-background-color: AA79D3; -fx-background-radius: 50; -fx-padding: 10;");
+        goalLabel.setStyle("-fx-background-color: AA79D3; -fx-background-radius: 50; -fx-padding: 10;");
+
+        Label displaygoals = new Label(userInput);
+        displaygoals.setStyle("-fx-font-family: 'Arial Round MT'; -fx-font-size: 30px; -fx-text-fill: white; ");
+        goalDetails.getChildren().add(displaygoals);
+        goalDescriptionField.clear();
+        goalsContainer.getChildren().add(goalLabel);
+        goalsContainer.getChildren().add(goalDetails);
+    }
+
+
 }
