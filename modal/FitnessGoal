@@ -1,10 +1,11 @@
-package Model;
+package com.example.javaapp.Model;
+
 
 public class FitnessGoal {
     private int goalId;
     private String description;
     private String completionDate;
-    private String status; // e.g., "Complete" or "Incomplete"
+    private String status;
 
     public FitnessGoal(int goalId, String description, String completionDate, String status) {
         this.goalId = goalId;
@@ -13,9 +14,8 @@ public class FitnessGoal {
         this.status = status;
     }
 
-    // Getters and Setters
     public int getGoalId() {
-        return goalId;
+        return this.goalId;
     }
 
     public void setGoalId(int goalId) {
@@ -23,7 +23,7 @@ public class FitnessGoal {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -31,7 +31,7 @@ public class FitnessGoal {
     }
 
     public String getCompletionDate() {
-        return completionDate;
+        return this.completionDate;
     }
 
     public void setCompletionDate(String completionDate) {
@@ -39,12 +39,10 @@ public class FitnessGoal {
     }
 
     public String getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(String status) {
         this.status = status;
     }
 }
-
-
