@@ -46,7 +46,7 @@ public class FitnessGoalController {
             List<FitnessGoal> loadedGoals = goalDAO.loadGoals();
             goals.addAll(loadedGoals);
             displayGoals();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -172,3 +172,4 @@ public class FitnessGoalController {
         goalsContainer.getChildren().add(goalDetails);
     }
 }
+
