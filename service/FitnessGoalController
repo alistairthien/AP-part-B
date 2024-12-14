@@ -95,7 +95,7 @@ public class FitnessGoalController {
 
             // Add click event to mark the goal for deletion
             goalBox.setOnMouseClicked(event -> {
-                if (goalBox.getStyle().contains("red")) {
+                if (goalBox.getStyle().contains("yellow")) {
                     // Unselect if already selected
                     goalBox.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #ccc;");
                     goalBox.setUserData(null);
