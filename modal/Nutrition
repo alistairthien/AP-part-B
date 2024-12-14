@@ -4,20 +4,26 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.LocalDate;
 
 public class Nutrition extends Application {
 
+    private int mealID;
     private String mealDescription;
     private Double calories;
     private LocalDate date;
 
+    public int getMealID() {
+        return mealID;
+    }
+    public void setMealID(int mealID) {
+        this.mealID = mealID;
+    }
+
     public String getMealDescription() {
         return mealDescription;
     }
-
     public void setMealDescription(String mealDescription) {
         this.mealDescription = mealDescription;
     }
@@ -25,7 +31,6 @@ public class Nutrition extends Application {
     public Double getCalories() {
         return calories;
     }
-
     public void setCalories(Double calories) {
         this.calories = calories;
     }
@@ -33,10 +38,10 @@ public class Nutrition extends Application {
     public LocalDate getDate() {
         return date;
     }
-
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -52,9 +57,7 @@ public class Nutrition extends Application {
             NutritionController nutri = new NutritionController();
             nutri.onClickProfile();
         }
-
     }
-
 
     public static void main(String[] args) {
         launch();
