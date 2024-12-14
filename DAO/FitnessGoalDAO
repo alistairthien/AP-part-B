@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FitnessGoalDAO {
     private static final String FitnessGoalDAO = "Fitness_goals.txt";
-    private static final String FILE_PATH = "FitnessGoals.txt";
+    private static final String FILE_PATH = "src/main/Data/FitnessGoal.txt";
 
     // Save goals to file in text format
     public void saveGoals(List<FitnessGoal> goals) throws IOException {
@@ -51,4 +51,5 @@ public class FitnessGoalDAO {
         return goals;
     }
 }
+
 
