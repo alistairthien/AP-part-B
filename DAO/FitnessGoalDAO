@@ -7,7 +7,6 @@ import java.util.List;
 
 
 public class FitnessGoalDAO {
-    private static final String FitnessGoalDAO = "Fitness_goals.txt";
     private static final String FILE_PATH = "src/main/Data/FitnessGoal.txt";
 
     // Save goals to file in text format
@@ -51,5 +50,3 @@ public class FitnessGoalDAO {
         return goals;
     }
 }
-
-
