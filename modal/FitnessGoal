@@ -18,7 +18,7 @@ public class FitnessGoal {
         this.completionDate = completionDate;
         this.status = status;
     }
-    
+
     public int getGoalId() {
         return this.goalId;
     }
@@ -52,4 +52,6 @@ public class FitnessGoal {
     }
 }
 
-}
+
+
+
