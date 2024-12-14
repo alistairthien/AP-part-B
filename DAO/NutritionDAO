@@ -1,1 +1,56 @@
+package com.example.javaapp.DAO;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class NutritionDAO {
+    private static final String FILE_PATH = "C:\\IntellijFiles\\JavaApp\\src\\main\\java\\Data\\meals.txt";
+
+    //Adds one meal record to txt file.
+    public void addMeal(String mealDetails) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
+            writer.write(mealDetails);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Error while adding meal: " + e.getMessage());
+        }
+    }
+
+    //Gets all meal records from txt file
+    public List<String> getAllMeals() {
+        List<String> meals = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                meals.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found. A new file will be created upon adding meals.");
+        } catch (IOException e) {
+            System.err.println("Error while reading meals: " + e.getMessage());
+        }
+        return meals;
+    }
+
+    //Clears selected meal records from txt file
+    public void clearMeals() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            // blank space
+        } catch (IOException e) {
+            System.err.println("Error while clearing meals: " + e.getMessage());
+        }
+    }
+
+    //Saves meal records to txt file
+    public void saveMeals(List<String> meals) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (String meal : meals) {
+                writer.write(meal);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error while saving meals: " + e.getMessage());
+        }
+    }
+}
