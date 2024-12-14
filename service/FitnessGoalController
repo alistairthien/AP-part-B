@@ -1,21 +1,26 @@
 package com.example.javaapp.Controller;
 
-
 import com.example.javaapp.DAO.FitnessGoalDAO;
 import com.example.javaapp.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.javaapp.Model.FitnessGoal;
 
+import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FitnessGoalController {
-
     @FXML
     private TextField goalDescriptionField;
     @FXML
@@ -24,12 +29,16 @@ public class FitnessGoalController {
     private VBox goalsContainer;
     @FXML
     private Button returnButton;
+    @FXML
+    private Button deleteGoal;
+
+
+
     private int goalCount = 1;
 
 
     private FitnessGoalDAO goalDAO = new FitnessGoalDAO();
     private ObservableList<FitnessGoal> goals = FXCollections.observableArrayList();
-
 
 
     @FXML
@@ -49,6 +58,7 @@ public class FitnessGoalController {
         String completionDate = completionDatePicker.getValue() != null
                 ? completionDatePicker.getValue().toString()
                 : "";
+
 
         if (description.isEmpty() || completionDate.isEmpty()) {
             showAlert("Error", "Please fill in all fields.");
@@ -70,7 +80,6 @@ public class FitnessGoalController {
     }
 
 
-
     private void displayGoals() {
         goalsContainer.getChildren().clear();
 
@@ -80,9 +89,36 @@ public class FitnessGoalController {
                     "\nComplete By: " + goal.getCompletionDate());
             goalLabel.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #ccc;");
             goalsContainer.getChildren().add(goalLabel);
+
         }
     }
+    @FXML
+    private void deleteGoal() {
+        List<FitnessGoal> selectedGoals = goalsContainer.getChildren().stream()
+                .filter(node -> node instanceof HBox)
+                .map(node -> (HBox) node)
+                .filter(hbox -> {
+                    CheckBox checkBox = (CheckBox) hbox.getChildren().get(0);
+                    return checkBox.isSelected();
+                })
+                .map(hbox -> (FitnessGoal) ((CheckBox) hbox.getChildren().get(0)).getUserData())
+                .collect(Collectors.toList());
 
+        if (selectedGoals.isEmpty()) {
+            showAlert("Error", "No goals selected to delete.");
+            return;
+        }
+
+        goals.removeAll(selectedGoals);
+
+        try {
+            goalDAO.saveGoals(goals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        displayGoals();
+    }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -92,18 +128,20 @@ public class FitnessGoalController {
     }
 
     @FXML
-    private void onClickReturn(){
+    private void onClickReturn() {
         SceneManager.loadScene("Home.fxml");
-    };
+    }
 
-    public void onGoalsDetails(){
+
+
+    public void onGoalsDetails() {
         String userInput = goalDescriptionField.getText();
-        if(userInput.isEmpty()){
+        if (userInput.isEmpty()) {
             return;
         }
         goalCount++;
         HBox goalDetails = new HBox();
-        Label goalLabel = new Label("goal" + goalCount );
+        Label goalLabel = new Label("goal" + goalCount);
         goalDetails.setStyle("-fx-background-color: AA79D3; -fx-background-radius: 50; -fx-padding: 10;");
         goalLabel.setStyle("-fx-background-color: AA79D3; -fx-background-radius: 50; -fx-padding: 10;");
 
@@ -115,5 +153,6 @@ public class FitnessGoalController {
         goalsContainer.getChildren().add(goalDetails);
     }
 
-
 }
+
+
