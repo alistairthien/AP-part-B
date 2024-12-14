@@ -172,4 +172,3 @@ public class FitnessGoalController {
         goalsContainer.getChildren().add(goalDetails);
     }
 }
-
