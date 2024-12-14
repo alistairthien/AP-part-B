@@ -33,7 +33,6 @@ public class FitnessGoalController {
     private Button deleteGoal;
 
 
-
     private int goalCount = 1;
 
 
@@ -84,32 +83,51 @@ public class FitnessGoalController {
         goalsContainer.getChildren().clear();
 
         for (FitnessGoal goal : goals) {
-            Label goalLabel = new Label("Goal " + goal.getGoalId() + ": " + goal.getDescription() +
-                    "\nStatus: " + goal.getStatus() +
-                    "\nComplete By: " + goal.getCompletionDate());
-            goalLabel.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #ccc;");
-            goalsContainer.getChildren().add(goalLabel);
+            VBox goalBox = new VBox();
+            goalBox.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #ccc;");
+            goalBox.setSpacing(5);
 
+            Label goalLabel = new Label("Goal " + goal.getGoalId() + ": " + goal.getDescription());
+            Label statusLabel = new Label("Status: " + goal.getStatus());
+            Label dateLabel = new Label("Complete By: " + goal.getCompletionDate());
+
+            goalBox.getChildren().addAll(goalLabel, statusLabel, dateLabel);
+
+            // Add click event to mark the goal for deletion
+            goalBox.setOnMouseClicked(event -> {
+                if (goalBox.getStyle().contains("red")) {
+                    // Unselect if already selected
+                    goalBox.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #ccc;");
+                    goalBox.setUserData(null);
+                } else {
+                    // Highlight selected goal
+                    goalBox.setStyle("-fx-padding: 10; -fx-background-color: yellow; -fx-border-color: #ccc;");
+                    goalBox.setUserData(goal);
+                }
+            });
+
+            goalsContainer.getChildren().add(goalBox);
         }
     }
     @FXML
-    private void deleteGoal() {
-        List<FitnessGoal> selectedGoals = goalsContainer.getChildren().stream()
-                .filter(node -> node instanceof HBox)
-                .map(node -> (HBox) node)
-                .filter(hbox -> {
-                    CheckBox checkBox = (CheckBox) hbox.getChildren().get(0);
-                    return checkBox.isSelected();
-                })
-                .map(hbox -> (FitnessGoal) ((CheckBox) hbox.getChildren().get(0)).getUserData())
+    public void deleteGoal() {
+        // Find all selected goals
+        List<VBox> selectedGoalBoxes = goalsContainer.getChildren().stream()
+                .filter(node -> node instanceof VBox)
+                .map(node -> (VBox) node)
+                .filter(vbox -> vbox.getUserData() != null)
                 .collect(Collectors.toList());
 
-        if (selectedGoals.isEmpty()) {
+        if (selectedGoalBoxes.isEmpty()) {
             showAlert("Error", "No goals selected to delete.");
             return;
         }
 
-        goals.removeAll(selectedGoals);
+        // Remove selected goals from the list
+        for (VBox goalBox : selectedGoalBoxes) {
+            FitnessGoal goalToDelete = (FitnessGoal) goalBox.getUserData();
+            goals.remove(goalToDelete);
+        }
 
         try {
             goalDAO.saveGoals(goals);
@@ -117,8 +135,10 @@ public class FitnessGoalController {
             e.printStackTrace();
         }
 
+        // Refresh the UI
         displayGoals();
     }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -131,7 +151,6 @@ public class FitnessGoalController {
     private void onClickReturn() {
         SceneManager.loadScene("Home.fxml");
     }
-
 
 
     public void onGoalsDetails() {
@@ -152,7 +171,4 @@ public class FitnessGoalController {
         goalsContainer.getChildren().add(goalLabel);
         goalsContainer.getChildren().add(goalDetails);
     }
-
 }
-
-
