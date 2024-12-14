@@ -5,25 +5,50 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FitnessGoalDAO {
-    private static final String FILE_NAME = "fitness_goals.txt";
 
-    // Save goals to file
+public class FitnessGoalDAO {
+    private static final String FitnessGoalDAO = "Fitness_goals.txt";
+    private static final String FILE_PATH = "FitnessGoals.txt";
+
+    // Save goals to file in text format
     public void saveGoals(List<FitnessGoal> goals) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
-            oos.writeObject(goals);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (FitnessGoal goal : goals) {
+                String goalData = goal.getGoalId() + "," +
+                        goal.getDescription() + "," +
+                        goal.getCompletionDate() + "," +
+                        goal.getStatus();
+                writer.write(goalData);
+                writer.newLine(); // Move to the next line
+            }
         }
     }
 
     // Load goals from file
-    public List<FitnessGoal> loadGoals() throws IOException, ClassNotFoundException {
-        File file = new File(FILE_NAME);
+    public List<FitnessGoal> loadGoals() throws IOException {
+        List<FitnessGoal> goals = new ArrayList<>();
+        File file = new File(FILE_PATH);
+
         if (!file.exists()) {
-            return new ArrayList<>();
+            return goals; // Return an empty list if file doesn't exist
         }
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
-            return (List<FitnessGoal>) ois.readObject();
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(","); // Split the line by commas
+                if (data.length == 4) { // Ensure the data has all 4 fields
+                    int goalId = Integer.parseInt(data[0].trim());
+                    String description = data[1].trim();
+                    String completionDate = data[2].trim();
+                    String status = data[3].trim();
+
+                    FitnessGoal goal = new FitnessGoal(goalId, description, completionDate, status);
+                    goals.add(goal);
+                }
+            }
         }
+        return goals;
     }
 }
+
