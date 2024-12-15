@@ -4,19 +4,17 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DAOImpObj {
-    private static DAOImpObj instance; // Singleton instance
+    private static DAOImpObj instance;
     private final ArrayList<User> users;
 
-    private final String FILE_PATH = "src/main/data/users.txt"; // File path for user data
+    private final String FILE_PATH = "src/main/data/users.txt";
 
-    // Private constructor for singleton
     private DAOImpObj() {
         users = new ArrayList<>();
-        ensureFilePathExists(); // Ensure the file path exists
-        loadUsersFromFile(FILE_PATH); // Load users when the instance is created
+        ensureFilePathExists();
+        loadUsersFromFile(FILE_PATH);
     }
 
-    // Public method to get the singleton instance
     public static synchronized DAOImpObj getInstance() {
         if (instance == null) {
             instance = new DAOImpObj();
@@ -24,7 +22,6 @@ public class DAOImpObj {
         return instance;
     }
 
-    // Ensure the file path exists
     private void ensureFilePathExists() {
         File file = new File(FILE_PATH);
         File directory = file.getParentFile();
@@ -37,47 +34,42 @@ public class DAOImpObj {
         }
     }
 
-    // Add a user to the list
     public void addUser(User user) {
         System.out.println("Adding user: " + user.getName() + ", ID: " + user.getUserId());
         users.add(user);
-        saveUsersToFile(FILE_PATH); // Save users to the file after adding
+        saveUsersToFile(FILE_PATH);
     }
 
-    // Search for a user by username
     public User searchByUsername(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return user;
             }
         }
-        return null; // User not found
+        return null;
     }
 
-    // Search for a user by user ID
     public User searchByUserId(String userId) {
         for (User user : users) {
             if (user.getUserId().equals(userId)) {
                 return user;
             }
         }
-        return null; // User not found
+        return null;
     }
 
-    // Update user data
     public void updateUser(User updatedUser) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUserId().equals(updatedUser.getUserId())) {
-                users.set(i, updatedUser); // Replace old data with updated data
-                saveUsersToFile(FILE_PATH); // Save updated data
+                users.set(i, updatedUser);
+                saveUsersToFile(FILE_PATH);
                 break;
             }
         }
     }
 
-    // Save users to a text file
     public void saveUsersToFile(String filePath) {
-        ensureFilePathExists(); // Ensure the file path exists before saving
+        ensureFilePathExists();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (User user : users) {
                 writer.write(user.getUserId() + "," + user.getName() + "," + user.getUsername() + "," +
@@ -91,19 +83,18 @@ public class DAOImpObj {
         }
     }
 
-    // Load users from a text file
     public void loadUsersFromFile(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
             System.out.println("User data file not found. Starting with an empty list.");
-            return; // If file doesn't exist, start with an empty list
+            return;
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 7) { // Ensure all parts are present
+                if (parts.length == 7) { 
                     String userId = parts[0];
                     String name = parts[1];
                     String username = parts[2];
