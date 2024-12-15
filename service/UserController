@@ -6,58 +6,55 @@ public class UserController {
 
     private final DAOImpObj dao = DAOImpObj.getInstance();
 
-    // Method for user registration
     public String registerUser(String name, String username, String password, String dob, double height, double weight) {
-        String userId = UUID.randomUUID().toString(); // Generate a unique ID
+        String userId = UUID.randomUUID().toString();
         User user = new User(userId, name, username, password, dob, height, weight);
-        dao.addUser(user); // Add user to the data storage
+        dao.addUser(user);
         System.out.println("Creating user: " + name + ", " + username + ", ID: " + userId);
-        return userId; // Return the generated user ID
+        return userId;
     }
 
-    // Method for user login
     public boolean login(String username, String password) {
-        User user = dao.searchByUsername(username); // Search for user by username
+        User user = dao.searchByUsername(username);
         if (user != null) {
             System.out.println("Found user during login: " + user.getUsername());
             if (user.getPassword().equals(password)) {
                 System.out.println("Password matched for user: " + user.getUsername());
-                return true; // Login success
+                return true;
             }
             System.out.println("Password mismatch for user: " + user.getUsername());
         } else {
             System.out.println("No user found with username: " + username);
         }
-        return false; // Login failed
+        return false;
     }
 
     public boolean verifyUser(String username, String userId) {
         User user = dao.searchByUsername(username);
         if (user != null && user.getUserId().equals(userId)) {
             System.out.println("User verified for forgot password: " + user.getUsername());
-            return true; // Valid username and ID
+            return true;
         }
         System.out.println("User verification failed: username=" + username + ", userId=" + userId);
-        return false; // Invalid username or ID
+        return false;
     }
 
     public boolean forgotPassword(String username, String userId) {
         User user = dao.searchByUsername(username);
         if (user != null && user.getUserId().equals(userId)) {
-            return true; // User is valid
+            return true;
         }
-        return false; // User not found
+        return false;
     }
 
-    // Method for password reset
     public boolean resetPassword(String userId, String newPassword) {
-        User user = dao.searchByUserId(userId); // Search for user by ID
+        User user = dao.searchByUserId(userId);
         if (user != null) {
-            user.setPassword(newPassword); // Update the password
-            dao.updateUser(user); // Save the updated user data
-            return true; // Reset success
+            user.setPassword(newPassword);
+            dao.updateUser(user);
+            return true;
         }
-        return false; // User not found
+        return false;
     }
 }
 
