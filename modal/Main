@@ -44,10 +44,14 @@ public class Main extends Application {
         SceneManager.loadScene("Register.fxml");
     }
 
+    public static void showHome() throws Exception {
+        SceneManager.loadScene("Home.fxml");
+    }
+
     public void ensureDirectoryExists(String path) {
         File directory = new File(path);
         if (!directory.exists()) {
-            directory.mkdirs(); // Create directories if they don't exist
+            directory.mkdirs();
         }
     }
 }
