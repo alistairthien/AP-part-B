@@ -7,22 +7,18 @@ public class UserControllerForm {
     private UserController userController = new UserController();
     private String currentUserId;
 
-    // Login fields
     @FXML private TextField loginUsernameField;
     @FXML private PasswordField loginPasswordField;
     @FXML private Label loginOutputLabel;
 
-    // Forgot Password fields
     @FXML private TextField forgotPasswordUserIdField;
     @FXML private TextField forgotPasswordUsernameField;
     @FXML private Label forgotPasswordOutputLabel;
 
-    // Reset Password fields
     @FXML private PasswordField resetPasswordNewField;
     @FXML private PasswordField resetPasswordConfirmField;
     @FXML private Label resetPasswordOutputLabel;
 
-    // Register fields
     @FXML private TextField registerNameField;
     @FXML private TextField registerUsernameField;
     @FXML private PasswordField registerPasswordField;
@@ -32,7 +28,6 @@ public class UserControllerForm {
     @FXML private TextField registerWeightField;
     @FXML private Label registerOutputLabel;
 
-    // Login method
     @FXML
     public void loginUser() {
         String username = loginUsernameField.getText();
@@ -47,14 +42,13 @@ public class UserControllerForm {
         boolean verified = userController.verifyUser(username, userId);
 
         if (verified) {
-            UserSession.setCurrentUserId(userId); // Save user ID globally
+            UserSession.setCurrentUserId(userId);
             Main.showResetPassword();
         } else {
             forgotPasswordOutputLabel.setText("Invalid username or ID.");
         }
     }
 
-    // Reset password method
     @FXML
     public void resetPassword() {
         String newPassword = resetPasswordNewField.getText();
@@ -72,7 +66,6 @@ public class UserControllerForm {
         resetPasswordOutputLabel.setText(success ? "Password reset successful!" : "User not found.");
     }
 
-    // Register method
     @FXML
     public void registerUser() {
         try{
@@ -116,7 +109,6 @@ public class UserControllerForm {
         }
     }
 
-    // Navigation methods
     @FXML
     public void goToLogin() throws Exception {
         Main.showLogin();
@@ -130,6 +122,29 @@ public class UserControllerForm {
     @FXML
     public void goToRegister() throws Exception {
         Main.showRegister();
+    }
+
+    @FXML
+    public void goToHome() throws Exception {
+        Main.showHome();
+    }
+
+    @FXML
+    public void goToLoginWithAlert() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Log Out Confirmation");
+        alert.setHeaderText("Are you sure you want to log out?");
+        alert.setContentText("Click 'OK' to confirm.");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    Main.showLogin();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
 
