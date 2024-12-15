@@ -1,0 +1,5 @@
+1,six pack,2025-09-01,Incomplete
+2,stay healthy,2025-02-05,Incomplete
+3,getting to 80kg,2024-12-31,Incomplete
+4,bench press 100kg,2025-12-15,Incomplete
+5,deadlift 150kg,2024-11-12,Incomplete
