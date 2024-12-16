@@ -17,7 +17,7 @@ public class NutritionController {
     @FXML
     private Button AddMealButton;
     @FXML
-    private TextField AddMealDetails;
+    private TextArea AddMealDetails;
     @FXML
     private TextField AddCalorie;
     @FXML
@@ -112,9 +112,11 @@ public class NutritionController {
 
             VBox mealDetails = new VBox();
             Label mealLabel = new Label("Meal " + (++mealID));
-            Label displayMeals = new Label("Meal Detail: " + mealDetail);
+            Label displayMeals = new Label("Meal Detail: \n" + mealDetail);
             Label calorieLabel = new Label("Calorie Intake: " + calories + " kcal");
             Label dateLabel = new Label("Meal Date: " + selectedDate);
+
+            displayMeals.setWrapText(true);
 
             mealLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-text-fill: white;");
             displayMeals.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-text-fill: white;");
@@ -211,9 +213,11 @@ public class NutritionController {
 
                     VBox mealDetails = new VBox();
                     Label mealLabel = new Label("Meal " + mealID);
-                    Label displayMeals = new Label("Meal Detail: " + mealName);
+                    Label displayMeals = new Label("Meal Detail: \n" + mealName);
                     Label calorieLabel = new Label("Calorie Intake: " + calories + " kcal");
                     Label dateLabel = new Label("Meal Date: " + date);
+
+                    displayMeals.setWrapText(true);
 
                     mealLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-text-fill: white;");
                     displayMeals.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-text-fill: white;");
