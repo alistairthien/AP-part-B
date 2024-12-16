@@ -19,10 +19,11 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9cd9ea" height="544.0" layoutX="-7.0" layoutY="-48.0" stroke="BLACK" strokeType="INSIDE" width="985.0">
             <effect>
                <DropShadow />
-            </effect></Rectangle>
-            <TextField fx:id="goalDescriptionField" focusTraversable="false" layoutX="45.0" layoutY="72.0" prefHeight="67.0" prefWidth="161.0" promptText="Enter goal details" style="-fx-background-color: #1900ff;">
+            </effect>
+         </Rectangle>
+            <TextField fx:id="goalDescriptionField" focusTraversable="false" layoutX="45.0" layoutY="72.0" prefHeight="67.0" prefWidth="161.0" promptText="Enter goal details" style="-fx-background-color: #6b6ded;">
                 <font>
-                    <Font name="System Bold Italic" size="13.0" />
+                    <Font name="Bodoni MT" size="16.0" />
                 </font>
             <effect>
                <DropShadow />
@@ -34,7 +35,7 @@
             </effect></DatePicker>
             <Button layoutX="379.0" layoutY="72.0" onAction="#addGoal" prefHeight="60.0" prefWidth="106.0" style="-fx-background-color: #456fa5; -fx-background-radius: 80;" text="Add Goal" textFill="WHITE">
             <font>
-               <Font name="Century Schoolbook" size="12.0" />
+               <Font name="Book Antiqua" size="16.0" />
             </font></Button>
             <Text fill="#e800ff" layoutX="718.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goals" wrappingWidth="95.99995117187507">
                 <font>
@@ -47,7 +48,7 @@
             <Button fx:id="returnButton" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickReturn" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: #020203; -fx-background-radius: 80;" text="Return" textFill="WHITE" />
          <Button layoutX="486.0" layoutY="72.0" mnemonicParsing="false" onAction="#deleteGoal" prefHeight="60.0" prefWidth="106.0" style="-fx-background-color: #fc03db; -fx-background-radius: 80;" text="Delete Goal" textFill="WHITE">
             <font>
-               <Font name="Arial" size="12.0" />
+               <Font name="Arial Black" size="13.0" />
             </font>
             <opaqueInsets>
                <Insets />
@@ -90,4 +91,3 @@
       </effect>
     </AnchorPane>
 </VBox>
-
