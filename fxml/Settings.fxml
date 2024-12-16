@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1930.0" style="-fx-background-color: rgba(202, 239, 247, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaapp.Controller.SettingsController">
+   <left>
+      <AnchorPane prefHeight="680.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <AnchorPane prefHeight="120.0" prefWidth="200.0" style="-fx-background-color: rgba(57, 69, 175, 1);" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="192.0" maxWidth="1742.0" prefHeight="120.0" text="Settings" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="40.0" />
+               </font>
+            </Label>
+            <Button fx:id="returnButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="-38.0" mnemonicParsing="false" onAction="#onClickReturn" prefHeight="120.0" prefWidth="217.0" style="-fx-background-radius: 50; -fx-background-color: rgba(16, 22, 76, 1);" text="Return" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </top>
+   <right>
+      <AnchorPane prefHeight="880.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <AnchorPane prefHeight="0.0" prefWidth="1930.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#5d2e7d" height="250.0" layoutX="675.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1263.0" y="-30.0" />
+            <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#8453ab" height="250.0" layoutX="412.0" layoutY="350.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1524.0" y="-30.0" />
+            <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#aa79d3" height="250.0" layoutX="175.0" layoutY="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1761.0" y="-30.0" />
+            <Button fx:id="ProfileSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="709.0" layoutY="100.0" mnemonicParsing="false" onAction="#onClickProfileSettings" prefHeight="190.0" prefWidth="492.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Profile Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Button>
+            <Rectangle fill="#5d2e7d" height="250.0" layoutX="1361.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="576.0" y="-30.0" />
+            <Button fx:id="AccountSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="450.0" layoutY="350.0" mnemonicParsing="false" onAction="#onClickAccountSettings" prefHeight="190.0" prefWidth="492.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Account Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Button>
+            <Rectangle fill="#8453ab" height="250.0" layoutX="1282.0" layoutY="350.0" stroke="TRANSPARENT" strokeType="INSIDE" width="655.0" y="-30.0" />
+            <Button fx:id="NotificationSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="210.0" layoutY="600.0" mnemonicParsing="false" onAction="#onClickNotificationSettings" prefHeight="190.0" prefWidth="492.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Notification Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aa79d3" height="250.0" layoutX="1195.0" layoutY="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="746.0" y="-30.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
