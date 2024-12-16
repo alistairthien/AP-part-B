@@ -1,0 +1,74 @@
+package com.example.javaapp.Controller;
+
+import com.example.javaapp.SceneManager;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+
+public class SettingsController {
+
+    @FXML
+    public void onClickReturn(){
+        SceneManager.loadScene("Home.fxml");
+    }
+    @FXML
+    public void onClickReturn2(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+    @FXML
+    public void onClickProfileSettings(){
+        SceneManager.loadScene("ProfileSettings.fxml");
+    }
+    @FXML
+    public void onClickAccountSettings(){
+        SceneManager.loadScene("AccountSettings.fxml");
+    }
+    @FXML
+    public void onClickNotificationSettings(){
+        SceneManager.loadScene("NotifSettings.fxml");
+    }
+
+
+    //ProfileSettings
+    @FXML
+    public void onChangePfp(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+    @FXML
+    public void onChangeName(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+    @FXML
+    public void onUpdateHeight(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+    @FXML
+    public void onUpdateWeight(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+
+
+    //AccountSettings
+    @FXML
+    public void onChangeUsername(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+    @FXML
+    public void onChangeEmail(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+    @FXML
+    public void onChangePassword(){
+        SceneManager.loadScene("ResetPassword.fxml");
+    }
+    @FXML
+    public void onLogOut(){
+        SceneManager.loadScene("Login.fxml");
+    }
+
+
+    //NotifSettings
+    @FXML
+    public void onAllowNotif(){
+        SceneManager.loadScene("Settings.fxml");
+    }
+}
