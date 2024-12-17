@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -12,96 +13,145 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1930.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaapp.Controller.NutritionController">
-   <left>
-      <AnchorPane prefHeight="518.0" prefWidth="748.0" style="-fx-background-color: rgba(168, 195, 230, 1);" BorderPane.alignment="CENTER">
-         <DatePicker fx:id="MealDate" layoutX="375.0" layoutY="81.0" onAction="#onSelectDate" prefHeight="70.0" prefWidth="340.0" style="-fx-background-color: rgba(244, 231, 255, 1); -fx-background-radius: 40;" />
-         <TextField fx:id="AddCalorie" alignment="CENTER" layoutX="561.0" layoutY="160.0" onAction="#onAddCalorie" prefHeight="130.0" prefWidth="153.0" promptText="Enter Calorie Intake" style="-fx-background-color: rgba(233, 234, 254, 1); -fx-border-color: rgba(93, 46, 125, 1);">
-            <font>
-               <Font name="Arial Rounded MT Bold" size="20.0" />
-            </font>
-         </TextField>
-         <Button fx:id="AddMealButton" layoutX="30.0" layoutY="160.0" mnemonicParsing="false" onAction="#onClickAddMeal" prefHeight="130.0" prefWidth="130.0" style="-fx-background-radius: 20; -fx-background-color: rgba(93, 46, 125, 1);" text="Add Meal" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font size="22.0" />
-            </font>
-         </Button>
-         <Button fx:id="deleteMealButton" layoutX="520.0" layoutY="315.0" mnemonicParsing="false" onAction="#deleteMeal" prefHeight="46.0" prefWidth="194.0" style="-fx-background-radius: 20; -fx-background-color: rgba(93, 46, 125, 1); -fx-font-size: 30; -fx-font-family: Arial Round MT;" text="Delete Meal" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Button>
-         <Button fx:id="mealHistory" layoutX="289.0" layoutY="315.0" mnemonicParsing="false" onAction="#loadStoredMeals" prefHeight="46.0" prefWidth="194.0" style="-fx-background-radius: 20; -fx-background-color: rgba(93, 46, 125, 1);" text="Meal History" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font size="22.0" />
-            </font>
-         </Button>
-         <TextArea fx:id="AddMealDetails" layoutX="160.0" layoutY="160.0" onKeyTyped="#onAddMealDetails" prefHeight="131.0" prefWidth="402.0" promptText="Enter Meal Details" style="-fx-background-color: rgba(244, 231, 255, 1);" wrapText="true">
-            <font>
-               <Font name="Arial Rounded MT Bold" size="24.0" />
-            </font>
-         </TextArea>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="841.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-   </right>
-   <top>
-      <AnchorPane prefHeight="120.0" prefWidth="1930.0" style="-fx-background-color: rgba(57, 69, 175, 1);" BorderPane.alignment="CENTER">
-         <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-               </light>
-            </Lighting>
-         </effect>
-         <children>
-            <Button fx:id="ProfileButton" layoutX="1810.0" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="120.0" prefWidth="120.0" style="-fx-border-radius: 100; -fx-background-color: rgba(57, 69, 175, 1);" textFill="TRANSPARENT" wrapText="true">
-               <graphic>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../IntellijFiles/JavaApp/src/main/java/Data/img.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Label layoutX="192.0" prefHeight="120.0" prefWidth="249.0" text="Nutrition" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="40.0" />
-               </font>
-            </Label>
-            <Button fx:id="ReturnButton" contentDisplay="CENTER" ellipsisString="" layoutX="-42.0" layoutY="2.0" mnemonicParsing="false" onAction="#onClickReturn" prefHeight="120.0" prefWidth="216.0" style="-fx-background-color: rgba(16, 22, 76, 1); -fx-background-radius: 100; -fx-font-size: 40; -fx-font-family: Arial Round MT;" text="Return" textAlignment="RIGHT" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="50.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </top>
-   <center>
-      <AnchorPane prefHeight="600.0" prefWidth="1182.0" style="-fx-background-color: rgba(168, 195, 230, 1);" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane layoutX="392.0" layoutY="150.0" prefHeight="645.0" prefWidth="624.0" style="-fx-background-radius: 50;">
-              <content>
-                <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="594.0">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaapp.Controller.NutritionController">
+   <content>
+      <BorderPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <top>
+            <AnchorPane prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: rgba(57, 69, 175, 1);" BorderPane.alignment="CENTER">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                     </light>
+                  </Lighting>
+               </effect>
+               <children>
+                  <Label layoutX="100.0" layoutY="9.0" prefHeight="37.0" prefWidth="138.0" text="Nutrition" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="ReturnButton" contentDisplay="CENTER" layoutX="-26.0" layoutY="5.0" mnemonicParsing="false" onAction="#onClickReturn" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: rgba(16, 22, 76, 1); -fx-background-radius: 100;" text="Return" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="50.0" prefWidth="50.0" style="-fx-border-radius: 100; -fx-background-color: rgba(57, 69, 175, 1);" textFill="TRANSPARENT" wrapText="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../java/Data/img.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
+         <right>
+            <VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="300.0" minWidth="300.0">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="64.0" text="Meals" wrapText="true" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ScrollPane fitToHeight="true" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background: rgba(168, 195, 230, 1);" VBox.vgrow="ALWAYS">
+                     <content>
+                        <AnchorPane style="-fx-background-color: rgba(168, 195, 230, 1);">
+                           <children>
+                              <VBox fx:id="mealContainer" layoutX="2.0" maxHeight="Infinity" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgba(168, 195, 230, 1);" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </ScrollPane>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </right>
+         <center>
+            <VBox maxHeight="Infinity" maxWidth="Infinity" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="22.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox fx:id="mealContainer" layoutX="2.0" maxHeight="1.7976931348623157E308" prefWidth="596.0" style="-fx-background-color: rgba(244, 231, 255, 1); -fx-background-radius: 50;" />
+                        <DatePicker fx:id="MealDate" onAction="#onSelectDate" prefHeight="60.0" prefWidth="162.0" promptText="Meal Date" style="-fx-background-color: rgba(244, 231, 255, 1);" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </DatePicker>
                      </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
-            <Label layoutX="388.0" layoutY="57.0" text="Meals">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="40.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="0.0" prefWidth="1930.0" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+                  </HBox>
+                  <HBox spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="AddMealButton" mnemonicParsing="false" onAction="#onClickAddMeal" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 20; -fx-background-color: rgba(93, 46, 125, 1);" text="Add Meal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <TextArea fx:id="AddMealDetails" maxWidth="-Infinity" onKeyTyped="#onAddMealDetails" prefHeight="67.0" prefWidth="200.0" promptText="Enter Meal Details" style="-fx-background-color: rgba(244, 231, 255, 1);" wrapText="true" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </HBox.margin>
+                        </TextArea>
+                        <TextField fx:id="AddCalorie" alignment="CENTER" maxWidth="-Infinity" onAction="#onAddCalorie" prefHeight="67.0" prefWidth="150.0" promptText="Calorie Intake" style="-fx-background-color: rgba(233, 234, 254, 1); -fx-border-color: rgba(93, 46, 125, 1);" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox spacing="10.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="mealHistory" mnemonicParsing="false" onAction="#loadStoredMeals" prefHeight="60.0" prefWidth="106.0" style="-fx-background-radius: 20; -fx-background-color: rgba(93, 46, 125, 1);" text="Meal History" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="deleteMealButton" mnemonicParsing="false" onAction="#deleteMeal" prefHeight="60.0" prefWidth="106.0" style="-fx-background-radius: 20; -fx-background-color: rgba(93, 46, 125, 1);" text="Delete Meal" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </content>
+</ScrollPane>
