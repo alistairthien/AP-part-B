@@ -32,7 +32,7 @@
                <children>
                   <Rectangle fill="#aa79d3" height="80.0" layoutX="241.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="359.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#aa79d3" height="80.0" layoutX="131.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" translateX="80.0" width="1401.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="50.0" />
-                  <Button fx:id="ProfileSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="222.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickProfileSettings" prefHeight="60.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Profile Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="222.0">
+                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="222.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickProfileSettings" prefHeight="60.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Profile Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="222.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -43,7 +43,7 @@
                <children>
                   <Rectangle fill="#8453ab" height="80.0" layoutX="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="438.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8453ab" height="80.0" layoutX="167.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1610.0" AnchorPane.leftAnchor="126.0" />
-                  <Button fx:id="AccountSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="182.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAccountSettings" prefHeight="60.0" prefWidth="123.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Account Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="140.0">
+                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="182.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAccountSettings" prefHeight="60.0" prefWidth="123.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Account Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="140.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -54,7 +54,7 @@
                <children>
                   <Rectangle fill="#5d2e7d" height="80.0" layoutX="104.0" stroke="TRANSPARENT" strokeType="INSIDE" width="496.0" AnchorPane.rightAnchor="0.0" />
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#5d2e7d" height="80.0" layoutX="101.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1686.0" AnchorPane.leftAnchor="78.0" />
-                  <Button fx:id="NotificationSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="92.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickNotificationSettings" prefHeight="60.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Notification Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="10.0">
+                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="92.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickNotificationSettings" prefHeight="60.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Notification Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="10.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
