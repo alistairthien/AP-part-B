@@ -4,60 +4,64 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1930.0" style="-fx-background-color: rgba(202, 239, 247, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaapp.Controller.SettingsController">
-   <left>
-      <AnchorPane prefHeight="680.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-   </left>
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(202, 239, 247, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaapp.Controller.SettingsController">
    <top>
-      <AnchorPane prefHeight="120.0" prefWidth="200.0" style="-fx-background-color: rgba(57, 69, 175, 1);" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: rgba(57, 69, 175, 1);" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="192.0" maxWidth="1742.0" prefHeight="120.0" text="Settings" textFill="WHITE">
+            <Label layoutX="77.0" maxWidth="1742.0" prefHeight="40.0" prefWidth="73.0" text="Settings" textFill="WHITE">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="40.0" />
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="returnButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="-38.0" mnemonicParsing="false" onAction="#onClickReturn" prefHeight="120.0" prefWidth="217.0" style="-fx-background-radius: 50; -fx-background-color: rgba(16, 22, 76, 1);" text="Return" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="returnButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="-21.0" mnemonicParsing="false" onAction="#onClickReturn" prefHeight="38.0" prefWidth="93.0" style="-fx-background-radius: 50; -fx-background-color: rgba(16, 22, 76, 1);" text="Return" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="36.0" />
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
    </top>
-   <right>
-      <AnchorPane prefHeight="880.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <AnchorPane prefHeight="0.0" prefWidth="1930.0" BorderPane.alignment="CENTER" />
-   </bottom>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#5d2e7d" height="250.0" layoutX="675.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1263.0" y="-30.0" />
-            <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#8453ab" height="250.0" layoutX="412.0" layoutY="350.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1524.0" y="-30.0" />
-            <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#aa79d3" height="250.0" layoutX="175.0" layoutY="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1761.0" y="-30.0" />
-            <Button fx:id="ProfileSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="709.0" layoutY="100.0" mnemonicParsing="false" onAction="#onClickProfileSettings" prefHeight="190.0" prefWidth="492.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Profile Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="36.0" />
-               </font>
-            </Button>
-            <Rectangle fill="#5d2e7d" height="250.0" layoutX="1361.0" layoutY="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="576.0" y="-30.0" />
-            <Button fx:id="AccountSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="450.0" layoutY="350.0" mnemonicParsing="false" onAction="#onClickAccountSettings" prefHeight="190.0" prefWidth="492.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Account Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="36.0" />
-               </font>
-            </Button>
-            <Rectangle fill="#8453ab" height="250.0" layoutX="1282.0" layoutY="350.0" stroke="TRANSPARENT" strokeType="INSIDE" width="655.0" y="-30.0" />
-            <Button fx:id="NotificationSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="210.0" layoutY="600.0" mnemonicParsing="false" onAction="#onClickNotificationSettings" prefHeight="190.0" prefWidth="492.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Notification Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="36.0" />
-               </font>
-            </Button>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aa79d3" height="250.0" layoutX="1195.0" layoutY="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="746.0" y="-30.0" />
+            <AnchorPane prefHeight="107.0" prefWidth="600.0">
+               <children>
+                  <Rectangle fill="#aa79d3" height="80.0" layoutX="241.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="359.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#aa79d3" height="80.0" layoutX="131.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" translateX="80.0" width="1401.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="50.0" />
+                  <Button fx:id="NotificationSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="143.0" layoutY="48.0" mnemonicParsing="false" onAction="#onClickNotificationSettings" prefHeight="60.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Notification Settings" textAlignment="CENTER" textFill="#26005e" translateX="80.0" wrapText="true" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="78.0" prefWidth="600.0">
+               <children>
+                  <Rectangle fill="#8453ab" height="80.0" layoutX="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="438.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8453ab" height="80.0" layoutX="167.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1610.0" AnchorPane.leftAnchor="126.0" />
+                  <Button fx:id="AccountSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="182.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAccountSettings" prefHeight="60.0" prefWidth="123.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Account Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="140.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="87.0" prefWidth="600.0">
+               <children>
+                  <Rectangle fill="#5d2e7d" height="80.0" layoutX="104.0" stroke="TRANSPARENT" strokeType="INSIDE" width="496.0" AnchorPane.rightAnchor="0.0" />
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#5d2e7d" height="80.0" layoutX="101.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1686.0" AnchorPane.leftAnchor="78.0" />
+                  <Button fx:id="ProfileSettingsButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="115.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickProfileSettings" prefHeight="60.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: white;" text="Profile Settings" textAlignment="CENTER" textFill="#26005e" wrapText="true" AnchorPane.leftAnchor="90.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </VBox>
    </center>
 </BorderPane>
