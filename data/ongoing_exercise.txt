@@ -1,0 +1,7 @@
+Strength,Push Up,50 reps,3,112,false,
+Cardio,Running,2 km,15,175,false,
+Balance,Tai Chi,,20,60,false,
+Cardio,Cycling,10 km,40,700,false,
+Flexibility,Yoga,,30,90,false,
+Strength,Deadlifts,15 reps,20,110,false,
+Balance,Pilates,,30,90,false,
