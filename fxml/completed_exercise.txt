@@ -1,3 +1,0 @@
-Flexibility,Yoga,,30,90,true,2024-12-20T16:02:47.118565700
-Strength,Deadlifts,15 reps,20,110,true,2024-12-20T16:02:50.870502400
-Balance,Tai Chi,,20,60,true,2024-12-20T16:09:12.642940800
