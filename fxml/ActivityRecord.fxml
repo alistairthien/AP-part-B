@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="460.0" prefWidth="820.0" spacing="10" style="-fx-background-color: #a8c3e6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ActivityRecordController">
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" prefHeight="50" spacing="10.0" style="-fx-background-color: rgba(57, 69, 175, 1);">
+        <Label alignment="CENTER" onMouseClicked="#handleReturn" prefHeight="50.0" prefWidth="105.0" style="-fx-text-fill: white; -fx-background-radius: 50; -fx-background-color: rgba(16, 22, 76, 1); -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Return">
+            <padding>
+                <Insets left="12.0" />
+            </padding>
+        </Label>
+        <Label style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Activity Records" />
+        <Pane HBox.hgrow="ALWAYS" />
+        <ImageView fx:id="profileIcon" fitHeight="40" fitWidth="40" onMouseClicked="#redirectToProfile" pickOnBounds="true" preserveRatio="true">
+            <Image url="@Icon.png" />
+            <HBox.margin>
+                <Insets right="5.0" />
+            </HBox.margin>
+        </ImageView>
+        <padding>
+            <Insets left="-21.0" />
+        </padding>
+    </HBox>
+
+    <HBox prefHeight="400.0" prefWidth="800.0" spacing="20" style="-fx-background-color: transparent;">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+        <VBox prefHeight="360.0" prefWidth="377.0" spacing="10.0">
+            <padding>
+                <Insets bottom="10.0" />
+            </padding>
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Ongoing Exercises:">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <padding>
+                    <Insets left="3.0" />
+                </padding>
+            </Label>
+            <ListView fx:id="ongoingExerciseListView" focusTraversable="false" prefHeight="323.0" prefWidth="331.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-padding: 0;">
+                <style>
+                    .scroll-bar:vertical, .scroll-bar:horizontal {
+                    -fx-opacity: 0;
+                    -fx-background-color: transparent;
+                    }
+                    .scroll-bar:vertical:hover, .scroll-bar:horizontal:hover {
+                    -fx-opacity: 0.5;
+                    }
+                </style>
+            </ListView>
+        </VBox>
+        <VBox prefHeight="360.0" prefWidth="431.0" spacing="10.0">
+            <padding>
+                <Insets bottom="10.0" />
+            </padding>
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Completed Exercises:">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <padding>
+                    <Insets left="3.0" />
+                </padding>
+            </Label>
+            <ListView fx:id="completedExerciseListView" focusTraversable="false" prefHeight="323.0" prefWidth="455.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-padding: 0;">
+                <style>
+                    .scroll-bar:vertical, .scroll-bar:horizontal {
+                    -fx-opacity: 0;
+                    -fx-background-color: transparent;
+                    }
+                    .scroll-bar:vertical:hover, .scroll-bar:horizontal:hover {
+                    -fx-opacity: 0.5;
+                    }
+                </style>
+            </ListView>
+        </VBox>
+    </HBox>
+</VBox>

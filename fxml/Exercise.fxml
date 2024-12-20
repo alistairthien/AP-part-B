@@ -1,1 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="460.0" prefWidth="820.0" style="-fx-font-family: 'Arial Rounded MT Bold'; -fx-font-weight: bold; -fx-background-color: rgba(168, 195, 230, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ExerciseController">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" prefHeight="50" spacing="10.0" style="-fx-background-color: rgba(57, 69, 175, 1);">
+        <Label alignment="CENTER" onMouseClicked="#handleReturn" prefHeight="50.0" prefWidth="105.0" style="-fx-text-fill: white; -fx-background-radius: 50; -fx-background-color: rgba(16, 22, 76, 1); -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Return">
+            <padding>
+                <Insets left="12.0" />
+            </padding>
+        </Label>
+        <Label style="-fx-text-fill: white; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Exercises" />
+        <Pane HBox.hgrow="ALWAYS" />
+        <ImageView fx:id="profileIcon" fitHeight="40" fitWidth="40" onMouseClicked="#redirectToProfile" pickOnBounds="true" preserveRatio="true">
+            <Image url="@Icon.png" />
+            <HBox.margin>
+                <Insets right="5.0" />
+            </HBox.margin>
+        </ImageView>
+        <padding>
+            <Insets left="-21.0" />
+        </padding>
+    </HBox>
+
+    <!-- Input Fields and Buttons -->
+    <HBox prefHeight="400.0" prefWidth="600.0" style="-fx-padding: 10;">
+        <VBox prefHeight="380.0" prefWidth="483.0" spacing="10">
+            <!-- Adding the Categories label -->
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold';" text="Categories:">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Label>
+            <VBox alignment="CENTER" prefHeight="79.0" prefWidth="264.0" spacing="10.0" style="-fx-background-color: #ededed; -fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 0, 1, 0, 2);">
+                <HBox spacing="56.0">
+                    <Button fx:id="cardioButton" onAction="#selectCategoryCardio" style="-fx-background-color: #c38fd1; -fx-font-size: 12;" text="Cardio" textFill="WHITE">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <padding>
+                     <Insets bottom="4.0" left="15.0" right="15.0" top="4.0" />
+                  </padding></Button>
+                    <Button fx:id="strengthButton" onAction="#selectCategoryStrength" style="-fx-background-color: #c38fd1; -fx-font-size: 12;" text="Strength" textFill="WHITE">
+                  <padding>
+                     <Insets bottom="4.0" left="7.0" right="7.0" top="4.0" />
+                  </padding></Button>
+                    <padding>
+                        <Insets bottom="1.0" left="26.0" />
+                    </padding>
+                </HBox>
+                <HBox spacing="55.0">
+                    <Button fx:id="flexibilityButton" onAction="#selectCategoryFlexibility" style="-fx-background-color: #c38fd1; -fx-font-size: 12;" text="Flexibility" textFill="WHITE" />
+                    <Button fx:id="balanceButton" onAction="#selectCategoryBalance" style="-fx-background-color: #c38fd1; -fx-font-size: 12;" text="Balance" textFill="WHITE" />
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets bottom="2.0" left="26.0" />
+                    </padding>
+                </HBox>
+                <padding>
+                    <Insets bottom="10.0" left="50.0" top="10.0" />
+                </padding>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </VBox>
+
+            <!-- Adding input fields -->
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold';" text="Exercise Name:" />
+            <TextField fx:id="nameField" disable="false" focusTraversable="true" promptText="Enter Exercise Name" style="-fx-background-color: rgba(57, 69, 175, 1); -fx-text-fill: white; -fx-prompt-text-fill: white; -fx-font-size: 12;" />
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold';" text="Distance (km) / Reps:" />
+            <TextField fx:id="distanceRepsField" disable="false" focusTraversable="true" promptText="Enter Distance (km) or Reps" style="-fx-background-color: rgba(57, 69, 175, 1); -fx-text-fill: white; -fx-prompt-text-fill: white; -fx-font-size: 12;" />
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold';" text="Duration (minutes):" />
+            <TextField fx:id="durationField" disable="false" focusTraversable="true" promptText="Enter Duration (minutes)" style="-fx-background-color: rgba(57, 69, 175, 1); -fx-text-fill: white; -fx-prompt-text-fill: white; -fx-font-size: 12;" />
+            <Button onAction="#addExercise" style="-fx-background-color: #c38fd1; -fx-font-size: 12;" text="Add Exercise" textFill="WHITE">
+                <VBox.margin>
+                    <Insets top="12.0" />
+                </VBox.margin>
+                <font>
+                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                </font>
+            </Button>
+            <Label fx:id="errorLabel" textFill="RED" />
+            <padding>
+                <Insets left="5.0" />
+            </padding>
+        </VBox>
+
+        <!-- Exercise List -->
+        <VBox spacing="10.0">
+            <Label style="-fx-font-weight: bold; -fx-font-family: 'Arial Rounded MT Bold'; -fx-font-size: 14px;" text="Exercises:">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <padding>
+                    <Insets left="3.0" />
+                </padding>
+            </Label>
+            <ListView fx:id="exerciseListView" prefHeight="297.0" prefWidth="513.0" style="-fx-background-color: #ededed; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 0, 1, 0, 2);">
+                <VBox.margin>
+                    <Insets right="10.0" />
+                </VBox.margin>
+            </ListView>
+            <Button onAction="#goToActivityRecord" prefHeight="23.0" prefWidth="123.0" style="-fx-background-color: #c38fd1; -fx-background-radius: 20; -fx-font-size: 12;" text="Activity Records" textFill="WHITE">
+                <VBox.margin>
+                    <Insets left="262.0" top="10.0" />
+                </VBox.margin>
+                <font>
+                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                </font>
+            </Button>
+            <HBox.margin>
+                <Insets left="40.0" />
+            </HBox.margin>
+            <padding>
+                <Insets bottom="10.0" />
+            </padding>
+        </VBox>
+    </HBox>
+</VBox>
